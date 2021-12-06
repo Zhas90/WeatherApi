@@ -1,5 +1,6 @@
 package kz.my.demo;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import kz.my.demo.entity.Weather;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -40,6 +41,10 @@ public class WeatherControllerTest {
 
         //Verify request succeed
         Assertions.assertEquals(201, result.getStatusCodeValue());
+
+        Weather createdWeather = stringToWeather(result.getBody());
+        Assertions.assertNotNull(createdWeather);
+        Assertions.assertNotNull(createdWeather.getId());
     }
 
     @Test
@@ -54,6 +59,14 @@ public class WeatherControllerTest {
 
         //Verify bad request
         Assertions.assertEquals(400, result.getStatusCodeValue());
+    }
+
+    private static Weather stringToWeather(String string) {
+        try {
+            return new ObjectMapper().readValue(string, Weather.class);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 }
