@@ -34,6 +34,19 @@ public class Weather {
     @NotEmpty(message = "temperatures must not be empty")
     private List<Double> temperatures;
 
+    public Weather() {
+    }
+
+    public Weather(Date date, Double lat, Double lon, String state, String city, List<Double> temperatures) {
+        super();
+        this.date = date;
+        this.lat = lat;
+        this.lon = lon;
+        this.state = state;
+        this.city = city;
+        this.temperatures = temperatures;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
