@@ -28,7 +28,7 @@ public class WeatherControllerTest {
     int randomServerPort;
 
     @Test
-    public void testAddEmployeeSuccess() throws URISyntaxException {
+    public void testAddWeatherSuccess() throws URISyntaxException {
         final String baseUrl = "http://localhost:" + randomServerPort + "/weather";
         URI uri = new URI(baseUrl);
 
@@ -48,7 +48,7 @@ public class WeatherControllerTest {
     }
 
     @Test
-    public void testAddEmployeeMissingHeader() throws URISyntaxException {
+    public void testAddWeatherBadRequest() throws URISyntaxException {
         final String baseUrl = "http://localhost:" + randomServerPort + "/weather";
         URI uri = new URI(baseUrl);
 
