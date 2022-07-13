@@ -1,5 +1,6 @@
 package kz.my.demo.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import kz.my.demo.entity.Weather;
 import kz.my.demo.service.WeatherService;
 import org.slf4j.Logger;
@@ -33,6 +34,7 @@ public class WeatherController {
     }
 
     @PostMapping
+    @Operation(summary = "Create a weather")
     public ResponseEntity<Weather> addWeather(@Valid @RequestBody Weather weather) {
         logger.info("REST request to add new weather {}", weather);
 
@@ -42,6 +44,7 @@ public class WeatherController {
     }
 
     @GetMapping
+    @Operation(summary = "Get weathers", description = "A good description applied to a wonderful endpoint :)")
     public ResponseEntity<List<Weather>> getWeatherList(@RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date date,
                                                         @RequestParam(required = false) List<String> city,
                                                         @RequestParam(required = false) String sort) {
@@ -51,6 +54,7 @@ public class WeatherController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Get weather by id")
     public ResponseEntity<Weather> getWeatherList(@PathVariable Long id) {
         logger.debug("REST request to get weather by id {}", id);
 

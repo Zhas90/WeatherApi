@@ -1,6 +1,9 @@
 package kz.my.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -8,6 +11,9 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
+@Setter
+@Getter
+@Schema(name="Weather", description="Weather characteristic")
 public class Weather {
 
     private Long id;
@@ -44,62 +50,6 @@ public class Weather {
         this.lon = lon;
         this.state = state;
         this.city = city;
-        this.temperatures = temperatures;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Double getLat() {
-        return lat;
-    }
-
-    public void setLat(Double lat) {
-        this.lat = lat;
-    }
-
-    public Double getLon() {
-        return lon;
-    }
-
-    public void setLon(Double lon) {
-        this.lon = lon;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public List<Double> getTemperatures() {
-        return temperatures;
-    }
-
-    public void setTemperatures(List<Double> temperatures) {
         this.temperatures = temperatures;
     }
 
